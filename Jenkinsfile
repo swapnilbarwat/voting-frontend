@@ -10,8 +10,8 @@ node {
    stage('Build') {
        docker.withRegistry('104.154.183.130:5000') {
           def app = docker.build "voting-frontend"
-          sh "version=$(cat version)"
-          app.push $version
+          def version = readFile('version').trim()
+          app.push ${version}
        }
 }
 stage "Deploy to dev. Mouse hover to select the option."
