@@ -10,7 +10,7 @@ node {
    stage('Build') {
        docker.withRegistry('104.154.183.130:5000') {
           def app = docker.build "voting-frontend"
-          version=$(cat version)
+          sh "version=$(cat version)"
           app.push $version
        }
 }
