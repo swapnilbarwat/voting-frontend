@@ -13,6 +13,7 @@ node {
           def version = readFile('version').trim()
           app.push ${version}
        }
+    }
 }
 stage "Deploy to dev. Mouse hover to select the option."
 input message: 'Do you want to deploy?', submitter: 'Yes'
