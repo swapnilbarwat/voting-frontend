@@ -9,8 +9,8 @@ node {
    }
    stage('Build') {
        docker.withRegistry('104.154.183.130:5000') {
-          def app = docker.build "voting-frontend"
           def version = readFile('version').trim()
+          def app = docker.build "voting-frontend:${version}"
           app.push ${version}
        }
     }
