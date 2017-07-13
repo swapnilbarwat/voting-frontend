@@ -1,9 +1,10 @@
 node {
    def mvnHome
+   def version
    stage('checkout') { // for display purposes
       // Get some code from a GitHub repository
       git 'https://github.com/swapnilbarwat/voting-frontend.git'
-      def version = readFile('version').trim()
+      version = readFile('version').trim()
       currentBuild.displayName = ${version}
       // Get the Maven tool.
       // ** NOTE: This 'M3' Maven tool must be configured
