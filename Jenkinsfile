@@ -8,7 +8,7 @@ node {
       // **       in the global configuration.           
    }
    stage('Build') {
-       docker.withRegistry('104.154.183.130:5000') {
+       docker.withRegistry('http://104.154.183.130:5000') {
           def version = readFile('version').trim()
           def app = docker.build "voting-frontend:${version}"
           app.push '${version}'
