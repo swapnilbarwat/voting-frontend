@@ -1,6 +1,5 @@
 node {
-   def mvnHome
-   def version
+   def version = ''
    stage('checkout') { // for display purposes
       // Get some code from a GitHub repository
       git 'https://github.com/swapnilbarwat/voting-frontend.git'
