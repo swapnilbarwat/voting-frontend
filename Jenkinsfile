@@ -1,9 +1,8 @@
-def version = ''
 node {
    stage('checkout') { // for display purposes
       // Get some code from a GitHub repository
       git 'https://github.com/swapnilbarwat/voting-frontend.git'
-      version = readFile('version').trim()
+      def version = readFile('version').trim()
       currentBuild.displayName = ${version}
       // Get the Maven tool.
       // ** NOTE: This 'M3' Maven tool must be configured
@@ -12,6 +11,7 @@ node {
    stage('Build') {
        docker.withRegistry('http://104.154.183.130:5000') {
           def app = docker.build "voting-frontend:${version}"
+          def version = readFile('version').trim()
           app.push(${version}")
        }
     }
