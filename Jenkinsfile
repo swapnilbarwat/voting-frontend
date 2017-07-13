@@ -4,7 +4,7 @@ node {
       // Get some code from a GitHub repository
       git 'https://github.com/swapnilbarwat/voting-frontend.git'
       version = readFile('version').trim()
-      currentBuild.displayName = "${version}"
+      currentBuild.displayName = "${version}-${env.BRANCH_NAME}"
       // Get the Maven tool.
       // ** NOTE: This 'M3' Maven tool must be configured
       // **       in the global configuration.           
