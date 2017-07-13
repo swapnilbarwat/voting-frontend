@@ -18,3 +18,15 @@ node {
 }
 stage "Deploy to dev. Mouse hover to select the option."
 input message: 'Do you want to deploy?', submitter: 'Yes'
+node {
+   stage('deployment to dev') { // for display purposes
+     echo "This will checkout blueprint yaml and deploy"
+   }
+}
+stage "Deploy to production. Mouse hover to select the option."
+input message: 'Do you want to deploy?', submitter: 'Yes'
+node {
+   stage('deployment to production') { // for display purposes
+     echo "This will checkout blueprint yaml and deploy to production"
+   }
+}
