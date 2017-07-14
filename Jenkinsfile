@@ -10,23 +10,24 @@ node {
       // **       in the global configuration.           
    }
    stage('Build') {
-       docker.withRegistry('http://localhost:5000') {
-          def app = docker.build "voting-frontend:${version}"
-          app.push("${version}")
+       docker.withRegistry('https://docker.io', 'docker-hub-credentials') {
+          def app = docker.build("harshals/voting-frontend:${version}")
+          sh "docker push docker.io/harshals/voting-frontend:${version}"
        }
     }
 }
-stage "Deploy to dev. Mouse hover to select the option."
-input message: 'Do you want to deploy?', submitter: 'Yes'
+
 node {
-   stage('deployment to dev') { // for display purposes
-     echo "This will checkout blueprint yaml and deploy"
+   stage('50-50% deployment') { // for display purposes
+      input message: 'Deploy to cluster? This will rollout new build to 50% cluster.'
    }
 }
-stage "Deploy to production. Mouse hover to select the option."
-input message: 'Do you want to deploy?', submitter: 'Yes'
+
 node {
-   stage('deployment to production') { // for display purposes
-     echo "This will checkout blueprint yaml and deploy to production"
+   stage('move full') { // for display purposes
+      input message: 'Deploy to full cluster?'
+   }
+   stage('undeploy previous version') {
+      echo "undeploying cluster"
    }
 }
