@@ -28,7 +28,7 @@ node {
       sh "curl -H \"Content-Type: application/x-yaml\" -X POST http://35.184.43.171:8080/api/v1/gateways --data-binary @result_gateway.yml"
       sh "curl -H \"Content-Type: application/x-yaml\" -X POST http://35.184.43.171:8080/api/v1/gateways --data-binary @worker_gateway.yml"
 
-      sh "curl -H \"Content-Type: application/x-yaml\" -X POST http://35.184.43.171:8080/api/v1/deployments/voting:0.0.1 --data-binary @blueprint.yml"
+      sh "curl -H \"Content-Type: application/x-yaml\" -X PUT http://35.184.43.171:8080/api/v1/deployments/voting:0.0.1 --data-binary @blueprint.yml"
    }
 }
 
