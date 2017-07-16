@@ -14,14 +14,16 @@ node {
           def app = docker.build("harshals/voting-frontend:${version}")
           sh "docker push docker.io/harshals/voting-frontend:${version}"
        }
-       sh "curl -H \"Content-Type: application/x-yaml\" -X POST http://104.197.251.15:8080/api/v1/breeds --data-binary @breeds/redis.yml"
-       sh "curl -H \"Content-Type: application/x-yaml\" -X POST http://104.197.251.15:8080/api/v1/breeds --data-binary @breeds/voting.yml"
+       sh "curl -H \"Content-Type: application/x-yaml\" -X POST http://35.184.43.171:8080/api/v1/breeds --data-binary @breeds/redis.yml"
+       sh "curl -H \"Content-Type: application/x-yaml\" -X POST http://35.184.43.171:8080/api/v1/breeds --data-binary @breeds/voting.yml"
     }
 }
 
 node {
    stage('50-50% deployment') { // for display purposes
       input message: 'Deploy to cluster? This will rollout new build to 50% cluster.'
+      git 'https://github.com/swapnilbarwat/deployment-strategies.git'
+      sh "curl -H \"Content-Type: application/x-yaml\" -X POST http://35.184.43.171:8080/api/v1/deployments --data-binary @deployment.yml"
    }
 }
 
