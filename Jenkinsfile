@@ -23,7 +23,7 @@ node {
    stage('50-50% deployment') { // for display purposes
       input message: 'Deploy to cluster? This will rollout new build to 50% cluster.'
       git 'https://github.com/swapnilbarwat/deployment-strategies.git'
-      echp "Creating gateway.."
+      echo "Creating gateway.."
       sh "curl -H \"Content-Type: application/x-yaml\" -X POST http://35.184.43.171:8080/api/v1/gateways --data-binary @voting_gatway.yml"
       sh "curl -H \"Content-Type: application/x-yaml\" -X POST http://35.184.43.171:8080/api/v1/gateways --data-binary @result_gatway.yml"
       sh "curl -H \"Content-Type: application/x-yaml\" -X POST http://35.184.43.171:8080/api/v1/gateways --data-binary @worker_gatway.yml"
