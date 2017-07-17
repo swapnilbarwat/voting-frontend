@@ -1,6 +1,4 @@
----
 name: redis
 deployable: redis
-
 ports:
-  web: 6379/http
+  redis_port: 6379/tcp

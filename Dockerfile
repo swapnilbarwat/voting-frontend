@@ -14,5 +14,7 @@ ADD . /app
 # Make port 80 available for links and/or publish
 EXPOSE 80
 
+ENV REDIST_HOST=127.0.0.1
+
 # Define our command to be run when launching the container
 CMD ["gunicorn", "app:app", "-b", "0.0.0.0:80", "--log-file", "-", "--access-logfile", "-", "--workers", "4", "--keep-alive", "0"]
