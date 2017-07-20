@@ -14,18 +14,17 @@ node {
           def app = docker.build("harshals/voting-frontend:${version}")
           sh "docker push docker.io/harshals/voting-frontend:${version}"
        }
-       sh "curl -H \"Content-Type: application/x-yaml\" -X POST http://104.154.240.64:8080/api/v1/breeds --data-binary @breeds/redis.yml"
-       sh "curl -H \"Content-Type: application/x-yaml\" -X POST http://104.154.240.64:8080/api/v1/breeds --data-binary @breeds/voting.yml"
+       sh "curl -H \"Content-Type: application/x-yaml\" -X POST http://104.154.240.64:8080/api/v1/breeds --data-binary @deployment/breeds/redis.yml"
+       sh "curl -H \"Content-Type: application/x-yaml\" -X POST http://104.154.240.64:8080/api/v1/breeds --data-binary @deployment/breeds/voting.yml"
     }
 }
 
 node {
    stage('50-50% deployment') { // for display purposes
       input message: 'Deploy to cluster? This will rollout new build to 50% cluster.'
-      git 'https://github.com/swapnilbarwat/deployment-strategies.git'
-      echo "Creating gateway.."
       
-      sh "curl -H \"Content-Type: application/x-yaml\" -X PUT http://104.154.240.64:8080/api/v1/deployments/voting_frontend --data-binary @voting_blueprint.yml"
+      sh "curl -H \"Content-Type: application/x-yaml\" -X PUT http://104.154.240.64:8080/api/v1/deployments/voting_frontend --data-binary @deployment/blueprint.yml"
+      sh "curl -H \"Content-Type: application/x-yaml\" -X PUT http://104.154.240.64:8080/api/v1/gateways --data-binary @deployment/gateway.yml"
    }
 }
 

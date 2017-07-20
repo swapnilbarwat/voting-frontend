@@ -1,0 +1,16 @@
+name: voting-frontend
+clusters:
+  db:
+    services:
+      breed: redis
+      scale:                            
+          cpu: 0.2
+          memory: 64MB
+          instances: 1
+  voting-frontend:
+    services:
+      breed: voting-frontend
+      scale:
+          cpu: 0.2
+          memory: 64MB
+          instances: 1
