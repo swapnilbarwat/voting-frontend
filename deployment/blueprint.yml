@@ -1,5 +1,4 @@
 name: voting-frontend:0.0.2
-deployable: company/my_frontend_service:0.2   
 gateways:
   81/http: voting-frontend/app_port
 clusters:
