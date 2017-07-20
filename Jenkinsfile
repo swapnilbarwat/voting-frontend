@@ -30,7 +30,7 @@ node {
     if(values[0] == "voting_frontend")
     {
       print("project name matched..")
-      if(values[1] != "${version}"")
+      if(values[1] != "${version}")
       {
         stage('50-50% deployment') { // for display purposes
            input message: 'Deploy to cluster? This will rollout new build to 50% cluster.'
