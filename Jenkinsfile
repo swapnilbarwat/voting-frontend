@@ -29,6 +29,7 @@ node {
     print values[1]
     if(values[0] == "voting_frontend")
     {
+      print("project name matched..")
       if(values[1] != ${version})
       {
         stage('50-50% deployment') { // for display purposes
