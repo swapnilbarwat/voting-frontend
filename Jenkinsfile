@@ -1,4 +1,4 @@
-import org.yaml.snakeyaml.Yaml
+import groovy.json.JsonSlurper
 
 def version = ''
 node {
