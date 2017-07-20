@@ -22,7 +22,7 @@ node {
 
 node {
    sh "curl -X GET http://104.154.31.116:8080/api/v1/deployments > output.json"
-   jsonFileContent=readfile('output.json')
+   jsonFileContent=readFile('output.json')
    def jsonSlurper = new JsonSlurper()
    def objectList = jsonSlurper.parseText(jsonFileContent)
    objectList.each {
