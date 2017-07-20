@@ -1,4 +1,4 @@
-name: voting-frontend
+name: voting-frontend:0.0.1
 clusters:
   db:
     services:

@@ -2,5 +2,5 @@
 name: voting-gateway
 port: 80/http           
 routes:
-  voting_frontend/voting-frontend/app_port:   
+  voting_frontend/voting-frontend:0.0.1/app_port:   
     weight: 100%    
