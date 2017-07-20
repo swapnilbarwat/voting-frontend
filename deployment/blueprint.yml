@@ -1,7 +1,12 @@
-name: voting-frontend:0.0.1
-deployable: company/my_frontend_service:0.1
+name: voting-frontend:0.0.2
+deployable: company/my_frontend_service:0.2
 gateways:
-  80/http: voting-frontend/app_port
+  ports: 80/http
+  routs:
+    voting-frontend:0.0.1:
+      weight: 50%     
+    voting-frontend:0.0.2:
+      weight: 50%     
 clusters:
   db:
     services:
@@ -18,10 +23,10 @@ clusters:
     services:
       breed: 
         name: voting-frontend
-        deployable: harshals/voting-frontend:0.0.1
+        deployable: harshals/voting-frontend:0.0.2
         ports:
           app_port: 80/tcp
-        environment_variables:         # required settings
+        environment_variables:
           REDIS_HOST: $db.host
         dependencies:
           db: redis
