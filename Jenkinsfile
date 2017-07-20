@@ -27,10 +27,9 @@ node {
     def values = "${it.name}".tokenize(':')
     print values[0]
     print values[1]
-    print values[2]
-    if(values[1] == "voting_frontend")
+    if(values[0] == "voting_frontend")
     {
-      if(values[2] != $version)
+      if(values[1] != $version)
       {
         stage('50-50% deployment') { // for display purposes
            input message: 'Deploy to cluster? This will rollout new build to 50% cluster.'
