@@ -1,12 +1,7 @@
 name: voting-frontend:0.0.2
-deployable: company/my_frontend_service:0.2
+deployable: company/my_frontend_service:0.2   
 gateways:
-  81: voting-frontend/app_port
-  routes:
-    voting-frontend:0.0.1:
-      weight: 50%     
-    voting-frontend:0.0.2:
-      weight: 50%     
+  81/http: voting-frontend/app_port
 clusters:
   db:
     services:
