@@ -25,9 +25,9 @@ node {
    objectList.each {
     print "Name: $it.name"
     def values = "$it.name".split(':')
-    print ${values[0]}
-    print ${values[1]}
-    print ${values[2]}
+    print "${values[0]}"
+    print "${values[1]}"
+    print "${values[2]}"
     if(${values[1]} == "voting_frontend")
     {
       if(${values[2]} != $version)
