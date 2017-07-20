@@ -24,13 +24,13 @@ node {
    def objectList = jsonParse(readFile('output.json'))
    objectList.each {
     print "Name: $it.name"
-    def (name, projectName, deployedVersion) = "$it.name".tokenize(':')
-    print "$name"
-    print "$projectName"
-    print "$deployedVersion"
-    if($projectName == "voting_frontend")
+    def values = "$it.name".split(':')
+    print "$values[0]"
+    print "$values[1]"
+    print "$values[2]"
+    if($values[1] == "voting_frontend")
     {
-      if($deployedVersion != $version)
+      if($values[2] != $version)
       {
         stage('50-50% deployment') { // for display purposes
            input message: 'Deploy to cluster? This will rollout new build to 50% cluster.'
