@@ -24,7 +24,7 @@ node {
    def objectList = jsonParse(readFile('output.json'))
    objectList.each {
     print "Name: $it.name"
-    def (name, projectName, deployedVersion) = "$it.name".split(':')
+    def (name, projectName, deployedVersion) = "$it.name".tokenize(':')
     print "$name"
     print "$projectName"
     print "$deployedVersion"
