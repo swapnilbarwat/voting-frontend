@@ -25,7 +25,7 @@ node {
       git 'https://github.com/swapnilbarwat/deployment-strategies.git'
       echo "Creating gateway.."
       
-      sh "curl -H \"Content-Type: application/x-yaml\" -X PUT http://104.154.240.64:8080/api/v1/deployments/voting_frontend --data-binary @voting_frontend.yml"
+      sh "curl -H \"Content-Type: application/x-yaml\" -X PUT http://104.154.240.64:8080/api/v1/deployments/voting_frontend --data-binary @voting_blueprint.yml"
    }
 }
 
