@@ -1,4 +1,4 @@
-import groovy.json.JsonSlurper
+import groovy.json.JsonSlurperClassic 
 
 def version = ''
 node {
@@ -22,9 +22,7 @@ node {
 
 node {
    sh "curl -X GET http://104.154.31.116:8080/api/v1/deployments > output.json"
-   jsonFileContent=readFile('output.json')
-   def jsonSlurper = new JsonSlurper()
-   def objectList = jsonSlurper.parseText(jsonFileContent)
+   def objectList = jsonParse(readFile('output.json'))
    objectList.each {
     print "Name: $it.name"
    }
@@ -41,4 +39,9 @@ node {
    stage('undeploy previous version') {
       echo "undeploying cluster"
    }
+}
+
+@NonCPS
+def jsonParse(def json) {
+    new groovy.json.JsonSlurperClassic().parseText(json)
 }
