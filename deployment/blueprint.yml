@@ -1,4 +1,4 @@
-name: voting-frontend:0.0.1
+name: voting-frontend:0.0.2
 gateways:
   81/http: voting-frontend/app_port       
 clusters:
@@ -17,7 +17,7 @@ clusters:
     services:
       breed: 
         name: voting-frontend
-        deployable: harshals/voting-frontend:0.0.1
+        deployable: harshals/voting-frontend:0.0.2
         ports:
           app_port: 80/tcp
         environment_variables:
