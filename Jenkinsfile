@@ -24,7 +24,7 @@ node {
    def objectList = jsonParse(readFile('output.json'))
    objectList.each {
     print "Name: $it.name"
-    def values = $it.name.split(':')
+    def values = "$it.name".split(':')
     if(values[1] == "voting_frontend")
     {
       if(values[2] != $version)
