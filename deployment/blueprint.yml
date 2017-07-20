@@ -1,18 +1,31 @@
-name: voting-frontend:0.0.1
+name: voting-frontend:0.0.2
+deployable: company/my_frontend_service:0.1
 gateways:
   80/http: voting-frontend/app_port
 clusters:
   db:
     services:
-      breed: redis
+      breed:
+        name: redis
+        deployable: redis:alpine
+        ports:
+          redis_port: 6379/tcp
       scale:                            
-          cpu: 0.2
-          memory: 64MB
-          instances: 1
+        cpu: 0.2
+        memory: 64MB
+        instances: 1
   voting-frontend:
     services:
-      breed: voting-frontend
+      breed: 
+        name: voting-frontend
+        deployable: harshals/voting-frontend:0.0.2
+        ports:
+          app_port: 80/tcp
+        environment_variables:         # required settings
+          REDIS_HOST: $db.host
+        dependencies:
+          db: redis
       scale:
-          cpu: 0.2
-          memory: 64MB
-          instances: 1
+        cpu: 0.2
+        memory: 64MB
+        instances: 1

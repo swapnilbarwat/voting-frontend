@@ -14,8 +14,6 @@ node {
           def app = docker.build("harshals/voting-frontend:${version}")
           sh "docker push docker.io/harshals/voting-frontend:${version}"
        }
-       sh "curl -H \"Content-Type: application/x-yaml\" -X POST http://104.154.240.64:8080/api/v1/breeds --data-binary @deployment/breeds/redis.yml"
-       sh "curl -H \"Content-Type: application/x-yaml\" -X POST http://104.154.240.64:8080/api/v1/breeds --data-binary @deployment/breeds/voting.yml"
     }
 }
 

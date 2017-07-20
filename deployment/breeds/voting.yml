@@ -1,8 +1,0 @@
-name: voting-frontend
-deployable: harshals/voting-frontend:0.0.1
-ports:
-  app_port: 80/tcp
-environment_variables:         # required settings
-  REDIS_HOST: $db.host
-dependencies:
-  db: redis

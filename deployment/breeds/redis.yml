@@ -1,4 +1,0 @@
-name: redis
-deployable: redis:alpine
-ports:
-  redis_port: 6379/tcp
