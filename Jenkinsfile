@@ -24,7 +24,6 @@ node {
       input message: 'Deploy to cluster? This will rollout new build to 50% cluster.'
       
       sh "curl -H \"Content-Type: application/x-yaml\" -X PUT http://104.154.240.64:8080/api/v1/deployments/voting_frontend:${version} --data-binary @deployment/blueprint.yml"
-      sh "curl -H \"Content-Type: application/x-yaml\" -X POST http://104.154.240.64:8080/api/v1/gateways --data-binary @deployment/gateway.yml"
    }
 }
 
