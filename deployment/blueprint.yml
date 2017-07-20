@@ -1,8 +1,6 @@
 name: voting-frontend:0.0.1
 gateways:
-  81/http: voting-frontend/app_port
-environment_variables:                  
-  APPLICATION_VERSION: 0.0.1         
+  81/http: voting-frontend/app_port       
 clusters:
   db:
     services:
