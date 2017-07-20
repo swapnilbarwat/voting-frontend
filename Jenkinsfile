@@ -14,8 +14,8 @@ node {
           def app = docker.build("harshals/voting-frontend:${version}")
           sh "docker push docker.io/harshals/voting-frontend:${version}"
        }
-       sh "curl -H \"Content-Type: application/x-yaml\" -X POST http://104.155.134.7:8080/api/v1/breeds --data-binary @breeds/redis.yml"
-       sh "curl -H \"Content-Type: application/x-yaml\" -X POST http://104.155.134.7:8080/api/v1/breeds --data-binary @breeds/voting.yml"
+       sh "curl -H \"Content-Type: application/x-yaml\" -X POST http://104.154.240.64:8080/api/v1/breeds --data-binary @breeds/redis.yml"
+       sh "curl -H \"Content-Type: application/x-yaml\" -X POST http://104.154.240.64:8080/api/v1/breeds --data-binary @breeds/voting.yml"
     }
 }
 
@@ -25,7 +25,7 @@ node {
       git 'https://github.com/swapnilbarwat/deployment-strategies.git'
       echo "Creating gateway.."
       
-      sh "curl -H \"Content-Type: application/x-yaml\" -X PUT http://104.155.134.7:8080/api/v1/deployments/voting:0.0.1 --data-binary @blueprint.yml"
+      sh "curl -H \"Content-Type: application/x-yaml\" -X PUT http://104.154.240.64:8080/api/v1/deployments/voting:0.0.1 --data-binary @blueprint.yml"
    }
 }
 
